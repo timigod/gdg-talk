@@ -16,13 +16,17 @@ public class TimiButton extends android.widget.Button {
 
     }
 
+    public void setOnLongClickListener(OnLongClickListener onLongClickListener) {
+
+    }
+
 
     public interface OnClickListener {
         void onClick(View v);
+    }
 
-        void onLongClick(View v);
-
-        void onTouch(View v);
+    public interface OnLongClickListener{
+        void onClick(View v);
     }
 
 }

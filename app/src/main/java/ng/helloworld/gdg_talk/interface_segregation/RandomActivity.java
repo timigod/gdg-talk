@@ -23,14 +23,12 @@ public class RandomActivity extends AppCompatActivity {
 
             }
 
+        });
+
+        create.setOnLongClickListener(new TimiButton.OnLongClickListener() {
             @Override
-            public void onLongClick(View v) {
-
-            }
-
-            @Override
-            public void onTouch(View v) {
-
+            public void onClick(View v) {
+                
             }
         });
     }
