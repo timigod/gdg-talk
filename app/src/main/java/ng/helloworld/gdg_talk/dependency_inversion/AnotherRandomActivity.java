@@ -13,7 +13,7 @@ public class AnotherRandomActivity extends AppCompatActivity {
     private String randomValue;
     private EditText editText;
     private Button save;
-    private BusinessLayer businessLayer;
+    private IBusinessLayer businessLayer;
 
 
     @Override

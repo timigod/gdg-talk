@@ -28,7 +28,7 @@ public class RandomActivity extends AppCompatActivity {
         create.setOnLongClickListener(new TimiButton.OnLongClickListener() {
             @Override
             public void onClick(View v) {
-                
+
             }
         });
     }
