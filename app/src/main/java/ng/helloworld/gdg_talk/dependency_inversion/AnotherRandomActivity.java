@@ -5,33 +5,59 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 
 import ng.helloworld.gdg_talk.R;
 
 public class AnotherRandomActivity extends AppCompatActivity {
-    private String randomValue;
-    private EditText editText;
-    private Button save;
+    private String name;
+    private EditText nameEditText;
+    private Button saveButton;
+    private User user;
     private IBusinessLayer businessLayer;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        save = (Button) findViewById(R.id.save);
-        save.setOnClickListener(new View.OnClickListener() {
+        initializeViews();
+        setSaveClickListener();
+    }
+
+    private void setSaveClickListener(){
+        saveButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                editText = (EditText) findViewById(R.id.name_edit_text);
-                User user = new User(randomValue);
-                businessLayer = new BusinessLayer();
-                if (businessLayer.isValid(user)) {
-                    businessLayer.save(user);
-                } else {
-                    // Display error or whatever
-                }
+                extractFormInputs();
+                createUser();
+                tryToPersistUser();
             }
         });
+    }
+
+    private void initializeViews() {
+        saveButton = (Button) findViewById(R.id.save);
+        nameEditText = (EditText) findViewById(R.id.name_edit_text);
+    }
+
+
+    private void createUser(){
+        user = new User(name);
+    }
+
+    private void extractFormInputs(){
+        name = nameEditText.getText().toString();
+    }
+
+    private void tryToPersistUser(){
+        createBusinessLayer();
+        if (businessLayer.isValid(user)) {
+            businessLayer.save(user);
+        } else {
+            // Display error or whatever
+        }
+    }
+
+    private void createBusinessLayer(){
+        businessLayer = new BusinessLayer();
     }
 }
