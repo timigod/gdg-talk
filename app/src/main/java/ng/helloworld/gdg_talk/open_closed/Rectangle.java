@@ -4,7 +4,7 @@ package ng.helloworld.gdg_talk.open_closed;
  * Created by timi on 05/08/2016.
  */
 
-public class Rectangle {
+public class Rectangle implements Shape {
     private double length;
     private double height;
 
@@ -25,4 +25,8 @@ public class Rectangle {
         this.length = length;
     }
 
+    @Override
+    public double getArea() {
+        return height * length;
+    }
 }
