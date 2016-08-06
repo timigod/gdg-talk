@@ -35,14 +35,8 @@ public class OrderRecyclerAdapter extends RecyclerView.Adapter<OrderRecyclerAdap
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
         Order order = items.get(position);
-        holder.orderNumber.setText(Integer.toString(order.getOrderNumber()));
-        long total = 0;
-        for (LineItem item : order.getLineItems()) {
-            total += item.getPrice();
-        }
-        NumberFormat formatter = NumberFormat.getCurrencyInstance(Locale.US);
-        String totalValue = formatter.format(total);
-        holder.orderTotal.setText(totalValue);
+        holder.orderNumber.setText(order.getOrderNumberAsString());
+        holder.orderTotal.setText(order.getFormattedTotal());
         holder.itemView.setTag(order);
     }
 
